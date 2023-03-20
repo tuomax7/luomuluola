@@ -1,26 +1,53 @@
-import React from "react";
-import { Typography, Box } from "@mui/material";
+import React from 'react'
+import { Typography, Box, createTheme, ThemeProvider, CssBaseline } from '@mui/material'
+import VideoPlayer from './components/VideoPlayer'
+import Introduction from './components/Introduction'
+import Footer from './components/Footer'
+
+const customTheme = createTheme({
+  root: {
+    fontFamily: 'sans-serif'
+  },
+  palette: {
+    background: {
+      default: '#CDA169'
+    },
+    text: {
+      primary: '#ffffff'
+    },
+    primary: {
+      main: '#CDA169'
+    },
+    secondary: {
+      main: '#926E50'
+    }
+  }
+})
 
 const App = () => {
   return (
-    <Box justifyContent="center">
-      <Typography variant="h1">LuomuLuola</Typography>
-      <div>Video tähän!</div>
-      <div>Nopea esittelyteksti tähän!</div>
-      <footer>
-        <p>Kreditit musiikille ja logopohjille</p>
-        <a href="https://www.flaticon.com/free-icons/cave" title="cave icons">
-          Cave icons created by Freepik - Flaticon
-        </a>
-        <a
-          href="https://www.flaticon.com/free-icons/seedling"
-          title="seedling icons"
-        >
-          Seedling icons created by Umeicon - Flaticon
-        </a>
-      </footer>
-    </Box>
-  );
-};
+    <ThemeProvider theme={customTheme}>
+      <CssBaseline />
+      <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' minHeight='100vh'>
+        <Box display='flex' flexDirection='row'>
+          <Box
+            component='img'
+            sx={{
+              height: 100,
+              width: 100
+            }}
+            src='luomuluolalogo.png'
+          ></Box>
+          <Typography variant='h1'>LuomuLuola</Typography>
+        </Box>
 
-export default App;
+        <Typography variant='h2'>Hyppää luomuostoksille!</Typography>
+        <VideoPlayer />
+        <Introduction />
+        <Footer />
+      </Box>
+    </ThemeProvider>
+  )
+}
+
+export default App
