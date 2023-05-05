@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  Typography,
-  Box,
-  createTheme,
-  ThemeProvider,
-  CssBaseline,
-} from "@mui/material";
-import VideoPlayer from "./components/VideoPlayer";
-import Introduction from "./components/Introduction";
-import Footer from "./components/Footer";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home.js";
 
 const customTheme = createTheme({
   root: {
@@ -33,31 +26,9 @@ const customTheme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <CssBaseline />
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100vh"
-      >
-        <Box display="flex" flexDirection="row">
-          <Box
-            component="img"
-            sx={{
-              height: 100,
-              width: 100,
-            }}
-            src="https://users.aalto.fi/~nummelt3/luomuluolalogo.png"
-          ></Box>
-          <Typography variant="h1">LuomuLuola</Typography>
-        </Box>
-
-        <Typography variant="h2">Hyppää luomuostoksille!</Typography>
-        <VideoPlayer />
-        <Introduction />
-        <Footer />
-      </Box>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </ThemeProvider>
   );
 };
