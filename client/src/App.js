@@ -2,6 +2,7 @@ import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home.js";
+import DirtyDozen from "./components/DirtyDozen.js";
 
 const customTheme = createTheme({
   root: {
@@ -28,6 +29,7 @@ const App = () => {
     <ThemeProvider theme={customTheme}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/dirtydozen" element={<DirtyDozen />} />
       </Routes>
     </ThemeProvider>
   );
