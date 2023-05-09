@@ -78,6 +78,15 @@ const DirtyDozen = () => {
             ))}
           </TableBody>
         </Table>
+        <Box width="50%">
+          Read more about the Dirty Dozen and its counterpart the Clean Fifteen
+          from{" "}
+          <ReferenceLink
+            url="https://www.ewg.org/foodnews/summary.php"
+            label="here!"
+            title="EWG Dirty Dozen 2023"
+          />
+        </Box>
       </Box>
     </Box>
   );
