@@ -7,14 +7,17 @@ const NavBar = () => {
   return (
     <AppBar sx={{ mb: 2, py: 1 }} position="static">
       <Toolbar sx={{ flexDirection: { xs: "column", sm: "row" } }}>
-        <Box
-          component="img"
-          sx={{
-            height: 100,
-            width: 100,
-          }}
-          src="https://users.aalto.fi/~nummelt3/luomuluolalogo.png"
-        ></Box>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Box
+            component="img"
+            sx={{
+              height: 100,
+              width: 100,
+            }}
+            src="https://users.aalto.fi/~nummelt3/luomuluolalogo.png"
+          ></Box>
+        </Link>
+
         <Typography variant="h1">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             LuomuLuola

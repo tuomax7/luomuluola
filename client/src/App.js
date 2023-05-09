@@ -3,6 +3,8 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home.js";
 import DirtyDozen from "./components/DirtyDozen.js";
+import Restaurants from "./components/Restaurants.js";
+import Restaurant from "./components/Restaurant.js";
 
 const customTheme = createTheme({
   root: {
@@ -30,6 +32,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dirtydozen" element={<DirtyDozen />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/restaurants/:id" element={<Restaurant />} />
       </Routes>
     </ThemeProvider>
   );
