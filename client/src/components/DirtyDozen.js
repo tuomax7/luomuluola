@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Typography,
   Box,
   CssBaseline,
   Table,
   TableBody,
   TableRow,
   TableCell,
+  Typography,
 } from "@mui/material";
 
 import ReferenceLink from "./ReferenceLink";
@@ -15,18 +15,18 @@ import NavBar from "./NavBar";
 //had detectable amounts of pesticides
 //img-urlit tilalle?
 const dirtyDozenData = [
-  { name: "Strawberries", pesticides: ">99%" },
-  { name: "Spinach", pesticides: "75%" },
-  { name: "Kale, Collards & Mustard Greens", pesticides: "86%" },
-  { name: "Peaches", pesticides: ">90%" },
-  { name: "Pears", pesticides: "90%" },
-  { name: "Nectarines", pesticides: ">90%" },
-  { name: "Apples", pesticides: "90%" },
-  { name: "Grapes", pesticides: "90%" },
-  { name: "Bell & Hot Peppers", pesticides: "90%" },
-  { name: "Cherries", pesticides: "90%" },
-  { name: "Blueberries", pesticides: "90%" },
-  { name: "Green beans", pesticides: "90%" },
+  "Strawberries",
+  "Spinach",
+  "Kale, Collards & Mustard Greens",
+  "Peaches",
+  "Pears",
+  "Nectarines",
+  "Apples",
+  "Grapes",
+  "Bell & Hot Peppers",
+  "Cherries",
+  "Blueberries",
+  "Green beans",
 ];
 
 const DirtyDozen = () => {
@@ -41,7 +41,10 @@ const DirtyDozen = () => {
         minHeight="100vh"
       >
         <NavBar />
-        <p>
+        <Box width="50%">
+          <Typography variant="h2" textAlign="center">
+            The Dirty Dozen
+          </Typography>
           The following 12 fruits & vegetables are the highest in pesticides
           measured by the{" "}
           <ReferenceLink
@@ -51,14 +54,26 @@ const DirtyDozen = () => {
           />{" "}
           in USA. When you go shopping, try to buy at least these products
           organic!
-        </p>
-        <Table>
+        </Box>
+        <Table style={{ width: "80%", columnGap: 0 }}>
           <TableBody>
-            {dirtyDozenData.map((foodItem, index) => (
+            {dirtyDozenData.map((foodName, index) => (
               <TableRow key={index}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{foodItem.name}</TableCell>
-                <TableCell>{foodItem.pesticides}</TableCell>
+                <TableCell>
+                  <Typography fontSize={25}>{index + 1}.</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography fontSize={30}>{foodName}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Box
+                    component="img"
+                    sx={{
+                      width: 200,
+                    }}
+                    src={`/images/${foodName}.jpeg`}
+                  ></Box>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
