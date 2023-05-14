@@ -1,7 +1,7 @@
 import axios from "axios";
 const URL = "https://www.luomuravintola.fi/apps/kitchenmap.groovy?querystr=";
 
-const resultCount = 1000;
+const resultCount = 20;
 
 export const restaurants = [
   { id: 1, name: "rafla" },
