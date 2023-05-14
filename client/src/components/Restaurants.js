@@ -19,13 +19,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import NavBar from "./NavBar";
 import StarRating from "./StarRating";
+import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
 
-import {
-  restaurants,
-  ratingByRestaurant,
-  getRestaurantsBySearchQuery,
-} from "../api";
+import { ratingByRestaurant, getRestaurantsBySearchQuery } from "../api";
 
 const Restaurants = () => {
   const [searchQuery, setSearchQuery] = useState(
@@ -34,9 +31,12 @@ const Restaurants = () => {
       : sessionStorage.getItem("searchQuery")
   );
 
-  const { data: restaurants } = useQuery({
-    queryKey: [],
+  //const [restaurants, setRestaurants] = useState([]);
+
+  const { data: restaurants, isFetching } = useQuery({
+    queryKey: [searchQuery, "search"],
     queryFn: () => getRestaurantsBySearchQuery(searchQuery),
+    enabled: searchQuery.length >= 3,
     placeholderData: [],
     staleTime: 1000 * 2,
   });
@@ -88,35 +88,50 @@ const Restaurants = () => {
             }}
           />
         </FormControl>
-        <Table style={{ width: "80%", columnGap: 0 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Rating</TableCell>
-              <TableCell>Address</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {console.log(restaurants)}
-            {restaurants.map((restaurant) => (
-              <TableRow key={restaurant.id}>
-                <TableCell>
-                  <Link
-                    to={`/restaurants/${restaurant.id}`}
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    {restaurant.kitchen}
-                  </Link>
-                </TableCell>
+        {restaurants.length <= 0 ? (
+          <Typography>
+            No results found! Type at least 3 characters to search.
+          </Typography>
+        ) : (
+          <LoadingSpinner fetching={isFetching} style={{ height: "50vh" }}>
+            {searchQuery.length < 3 && (
+              <Typography>
+                Start searching by typing at least 3 characters
+              </Typography>
+            )}
+            {searchQuery.length >= 3 && restaurants.length === 0 && (
+              <Typography>No results found</Typography>
+            )}
+            <Table style={{ width: "80%", columnGap: 0 }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Rating</TableCell>
+                  <TableCell>Address</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {restaurants.map((restaurant) => (
+                  <TableRow key={restaurant.id}>
+                    <TableCell>
+                      <Link
+                        to={`/restaurants/${restaurant.id}`}
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        {restaurant.kitchen}
+                      </Link>
+                    </TableCell>
 
-                <TableCell>
-                  <StarRating rating={ratingByRestaurant(restaurant.id)} />
-                </TableCell>
-                <TableCell>{restaurant.address}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+                    <TableCell>
+                      <StarRating rating={ratingByRestaurant(restaurant.id)} />
+                    </TableCell>
+                    <TableCell>{restaurant.address}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </LoadingSpinner>
+        )}
       </Box>
     </Box>
   );
