@@ -15,11 +15,17 @@ import {
 
 import ClearIcon from "@mui/icons-material/Clear";
 
+import { useQuery } from "@tanstack/react-query";
+
 import NavBar from "./NavBar";
 import StarRating from "./StarRating";
 import { Link } from "react-router-dom";
 
-import { restaurants, ratingByRestaurant } from "../api";
+import {
+  restaurants,
+  ratingByRestaurant,
+  getRestaurantsBySearchQuery,
+} from "../api";
 
 const Restaurants = () => {
   const [searchQuery, setSearchQuery] = useState(
@@ -28,14 +34,21 @@ const Restaurants = () => {
       : sessionStorage.getItem("searchQuery")
   );
 
-  function handleQueryChange(event) {
+  const { data: restaurants } = useQuery({
+    queryKey: [],
+    queryFn: () => getRestaurantsBySearchQuery(searchQuery),
+    placeholderData: [],
+    staleTime: 1000 * 2,
+  });
+
+  const handleQueryChange = async (event) => {
     setSearchQuery(event.target.value);
     sessionStorage.setItem("searchQuery", event.target.value);
-  }
-  function handleClearClick() {
+  };
+  const handleClearClick = () => {
     setSearchQuery("");
     sessionStorage.setItem("searchQuery", "");
-  }
+  };
 
   return (
     <Box>
@@ -80,9 +93,11 @@ const Restaurants = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Rating</TableCell>
+              <TableCell>Address</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
+            {console.log(restaurants)}
             {restaurants.map((restaurant) => (
               <TableRow key={restaurant.id}>
                 <TableCell>
@@ -90,12 +105,14 @@ const Restaurants = () => {
                     to={`/restaurants/${restaurant.id}`}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    {restaurant.name}
+                    {restaurant.kitchen}
                   </Link>
                 </TableCell>
+
                 <TableCell>
                   <StarRating rating={ratingByRestaurant(restaurant.id)} />
                 </TableCell>
+                <TableCell>{restaurant.address}</TableCell>
               </TableRow>
             ))}
           </TableBody>
