@@ -1,8 +1,6 @@
 import axios from "axios";
 const URL = "https://www.luomuravintola.fi/apps/kitchenmap.groovy?querystr=";
 
-const resultCount = 20;
-
 export const restaurants = [
   { id: 1, name: "rafla" },
   { id: 2, name: "raflakaks" },
@@ -15,11 +13,14 @@ const reviews = [
 
 export const getRestaurantsBySearchQuery = async (searchQuery) => {
   const restaurants = await axios.get(`${URL}${searchQuery}`);
-  return restaurants.data.kitchens.slice(0, resultCount);
+  return restaurants.data.kitchens;
 };
 
-export const restaurantById = (id) =>
-  getRestaurantsBySearchQuery.find((restaurant) => restaurant.id === id);
+export const restaurantByUrl = async (url) => {
+  const restaurants = await getRestaurantsBySearchQuery("");
+  console.log("haettu urli", url);
+  return restaurants.find((restaurant) => restaurant.cleanurl === url);
+};
 
 export const reviewsByRestaurant = (id) =>
   reviews.filter((review) => review.restaurantId === id);

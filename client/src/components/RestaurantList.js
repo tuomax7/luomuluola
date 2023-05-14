@@ -28,7 +28,7 @@ const RestaurantList = ({ restaurants }) => {
           <TableRow key={restaurant.id}>
             <TableCell>
               <Link
-                to={`/restaurants/${restaurant.id}`}
+                to={restaurant.cleanurl}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 {restaurant.kitchen}

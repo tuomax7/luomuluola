@@ -32,8 +32,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dirtydozen" element={<DirtyDozen />} />
-        <Route path="/restaurants" element={<Restaurants />} />
-        <Route path="/restaurants/:id" element={<Restaurant />} />
+        <Route path="/toimipaikat" element={<Restaurants />} />
+        <Route path="/toimipaikat/:urlid" element={<Restaurant />} />
       </Routes>
     </ThemeProvider>
   );

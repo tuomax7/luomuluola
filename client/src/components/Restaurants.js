@@ -25,8 +25,6 @@ const Restaurants = () => {
       : sessionStorage.getItem("searchQuery")
   );
 
-  //const [restaurants, setRestaurants] = useState([]);
-
   const { data: restaurants, isFetching } = useQuery({
     queryKey: [searchQuery, "search"],
     queryFn: () => getRestaurantsBySearchQuery(searchQuery),

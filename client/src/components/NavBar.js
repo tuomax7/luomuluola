@@ -25,7 +25,7 @@ const NavBar = () => {
         </Typography>
         <LinkButton to="/dirtydozen" label="Dirty Dozen" type="navbar" />
         <LinkButton
-          to="/restaurants"
+          to="/toimipaikat"
           label="Organic Restaurants"
           type="navbar"
         />
