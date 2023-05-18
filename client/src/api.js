@@ -3,7 +3,18 @@ const URL = "https://www.luomuravintola.fi/apps/kitchenmap.groovy?querystr=";
 
 export const getRestaurantsBySearchQuery = async (searchQuery) => {
   const restaurants = await axios.get(`${URL}${searchQuery}`);
-  return restaurants.data.kitchens;
+  const reviews = await getReviews();
+
+  const restaurantsReviewed = restaurants.data.kitchens.map((restaurant) => {
+    const reviewsForThis = reviews.filter(
+      (review) => review.kitchen === restaurant.kitchen
+    );
+    const ratingForThis = rating(reviewsForThis);
+
+    return { ...restaurant, reviews: reviewsForThis, rating: ratingForThis };
+  });
+
+  return restaurantsReviewed;
 };
 
 export const restaurantByUrl = async (url) => {
@@ -16,14 +27,7 @@ const getReviews = async () => {
   return reviews.data;
 };
 
-export const reviewsByRestaurant = async (kitchen) => {
-  const reviews = await getReviews();
-  return reviews.filter((review) => review.kitchen === kitchen);
-};
-
-export const ratingByRestaurant = async (kitchen) => {
-  const reviews = await reviewsByRestaurant(kitchen);
-
+export const rating = (reviews) => {
   const ratingAverage = () =>
     reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 

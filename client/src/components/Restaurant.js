@@ -16,11 +16,7 @@ import StarRating from "./StarRating";
 import LoadingSpinner from "./LoadingSpinner";
 import ReferenceLink from "./ReferenceLink";
 
-import {
-  restaurantByUrl,
-  reviewsByRestaurant,
-  ratingByRestaurant,
-} from "../api";
+import { restaurantByUrl } from "../api";
 
 const Restaurant = () => {
   const { urlid } = useParams();
@@ -28,21 +24,11 @@ const Restaurant = () => {
   const url = `/toimipaikat/${urlid}`;
 
   const [restaurant, setRestaurant] = useState(null);
-  const [reviews, setReviews] = useState([]);
-  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedRestaurant = await restaurantByUrl(url);
       await setRestaurant(fetchedRestaurant);
-
-      const fetchedReviews = await reviewsByRestaurant(
-        fetchedRestaurant.kitchen
-      );
-      await setReviews(fetchedReviews);
-
-      const fetchedRating = await ratingByRestaurant(fetchedRestaurant.kitchen);
-      await setRating(fetchedRating);
     };
     fetchData();
   }, [url]);
@@ -80,7 +66,7 @@ const Restaurant = () => {
                 <Typography variant="h2" textAlign="center">
                   {restaurant.kitchen}
                 </Typography>
-                <StarRating rating={rating} />
+                <StarRating rating={restaurant.rating} />
                 <Typography>{restaurant.address}</Typography>
                 <Typography>
                   {restaurant.zip} {restaurant.city}
@@ -100,7 +86,7 @@ const Restaurant = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {reviews.map((review) => (
+                  {restaurant.reviews.map((review) => (
                     <TableRow key={review.id}>
                       <TableCell width="60%">{review.content}</TableCell>
                       <TableCell>

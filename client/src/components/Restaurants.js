@@ -6,6 +6,9 @@ import {
   FormControl,
   TextField,
   IconButton,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@mui/material";
 
 import ClearIcon from "@mui/icons-material/Clear";
@@ -32,6 +35,13 @@ const Restaurants = () => {
     placeholderData: [],
     staleTime: 1000 * 2,
   });
+
+  const [sortBy, setSortBy] = useState("best");
+
+  const sortedRestaurants =
+    sortBy === "best"
+      ? restaurants.sort((r1, r2) => r2.rating - r1.rating)
+      : restaurants.sort((r1, r2) => r1.rating - r2.rating);
 
   const handleQueryChange = async (event) => {
     setSearchQuery(event.target.value);
@@ -94,7 +104,28 @@ const Restaurants = () => {
             {searchQuery.length >= 3 && restaurants.length === 0 && (
               <Typography>No results found</Typography>
             )}
-            <RestaurantList restaurants={restaurants} />
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              value={sortBy}
+              name="radio-buttons-group"
+              onChange={(event) => setSortBy(event.target.value)}
+              sx={{
+                my: 1,
+              }}
+              row
+            >
+              <FormControlLabel
+                value="best"
+                control={<Radio disableRipple color="default" />}
+                label="Best rated first"
+              />
+              <FormControlLabel
+                value="worst"
+                control={<Radio disableRipple color="default" />}
+                label="Worst rated first"
+              />
+            </RadioGroup>
+            <RestaurantList restaurants={sortedRestaurants} />
           </LoadingSpinner>
         )}
       </Box>
