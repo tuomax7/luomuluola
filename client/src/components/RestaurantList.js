@@ -7,15 +7,11 @@ import {
   TableHead,
 } from "@mui/material";
 
-import StarRating from "./StarRating";
-
-import { Link } from "react-router-dom";
-
-import { ratingByRestaurant } from "../api";
+import RestaurantItem from "./RestaurantItem";
 
 const RestaurantList = ({ restaurants }) => {
   return (
-    <Table style={{ width: "80%", columnGap: 0 }}>
+    <Table style={{ width: "60%", columnGap: 0 }}>
       <TableHead>
         <TableRow>
           <TableCell>Name</TableCell>
@@ -25,21 +21,7 @@ const RestaurantList = ({ restaurants }) => {
       </TableHead>
       <TableBody>
         {restaurants.map((restaurant) => (
-          <TableRow key={restaurant.id}>
-            <TableCell>
-              <Link
-                to={restaurant.cleanurl}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                {restaurant.kitchen}
-              </Link>
-            </TableCell>
-
-            <TableCell>
-              <StarRating rating={ratingByRestaurant(restaurant.id)} />
-            </TableCell>
-            <TableCell>{restaurant.address}</TableCell>
-          </TableRow>
+          <RestaurantItem key={restaurant.kitchen} restaurant={restaurant} />
         ))}
       </TableBody>
     </Table>

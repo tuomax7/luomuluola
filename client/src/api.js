@@ -1,16 +1,6 @@
 import axios from "axios";
 const URL = "https://www.luomuravintola.fi/apps/kitchenmap.groovy?querystr=";
 
-export const restaurants = [
-  { id: 1, name: "rafla" },
-  { id: 2, name: "raflakaks" },
-];
-
-const reviews = [
-  { id: 1, restaurantId: 1, content: "Jees mesta", rating: 3, upvotes: 1 },
-  { id: 2, restaurantId: 1, content: "Huippupaikka!", rating: 5, upvotes: 4 },
-];
-
 export const getRestaurantsBySearchQuery = async (searchQuery) => {
   const restaurants = await axios.get(`${URL}${searchQuery}`);
   return restaurants.data.kitchens;
@@ -18,15 +8,24 @@ export const getRestaurantsBySearchQuery = async (searchQuery) => {
 
 export const restaurantByUrl = async (url) => {
   const restaurants = await getRestaurantsBySearchQuery("");
-  console.log("haettu urli", url);
   return restaurants.find((restaurant) => restaurant.cleanurl === url);
 };
 
-export const reviewsByRestaurant = (id) =>
-  reviews.filter((review) => review.restaurantId === id);
+const getReviews = async () => {
+  const reviews = await axios.get("http://localhost:3001/reviews");
+  return reviews.data;
+};
 
-export const ratingByRestaurant = (id) =>
-  reviewsByRestaurant(id).length === 0
-    ? 0
-    : reviewsByRestaurant(id).reduce((sum, review) => sum + review.rating, 0) /
-      reviewsByRestaurant(id).length;
+export const reviewsByRestaurant = async (kitchen) => {
+  const reviews = await getReviews();
+  return reviews.filter((review) => review.kitchen === kitchen);
+};
+
+export const ratingByRestaurant = async (kitchen) => {
+  const reviews = await reviewsByRestaurant(kitchen);
+
+  const ratingAverage = () =>
+    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+
+  return reviews.length === 0 ? 0 : Number(ratingAverage().toFixed(2));
+};

@@ -14,6 +14,7 @@ import NavBar from "./NavBar";
 import { useParams } from "react-router-dom";
 import StarRating from "./StarRating";
 import LoadingSpinner from "./LoadingSpinner";
+import ReferenceLink from "./ReferenceLink";
 
 import {
   restaurantByUrl,
@@ -27,13 +28,23 @@ const Restaurant = () => {
   const url = `/toimipaikat/${urlid}`;
 
   const [restaurant, setRestaurant] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    const fetchRestaurant = async () => {
+    const fetchData = async () => {
       const fetchedRestaurant = await restaurantByUrl(url);
       await setRestaurant(fetchedRestaurant);
+
+      const fetchedReviews = await reviewsByRestaurant(
+        fetchedRestaurant.kitchen
+      );
+      await setReviews(fetchedReviews);
+
+      const fetchedRating = await ratingByRestaurant(fetchedRestaurant.kitchen);
+      await setRating(fetchedRating);
     };
-    fetchRestaurant();
+    fetchData();
   }, [url]);
 
   return (
@@ -53,11 +64,32 @@ const Restaurant = () => {
           style={{ height: "50vh" }}
         >
           {restaurant != null ? (
-            <Box>
-              <Box width="50%">
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box
+                width="80%"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Typography variant="h2" textAlign="center">
                   {restaurant.kitchen}
                 </Typography>
+                <StarRating rating={rating} />
+                <Typography>{restaurant.address}</Typography>
+                <Typography>
+                  {restaurant.zip} {restaurant.city}
+                </Typography>
+                <ReferenceLink
+                  url={restaurant.www}
+                  label={restaurant.www}
+                  title={restaurant.kitchen}
+                />
               </Box>
               <Table style={{ width: "80%", columnGap: 0 }}>
                 <TableHead>
@@ -68,9 +100,9 @@ const Restaurant = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {reviewsByRestaurant(restaurantByUrl(url)).map((review) => (
+                  {reviews.map((review) => (
                     <TableRow key={review.id}>
-                      <TableCell>{review.content}</TableCell>
+                      <TableCell width="60%">{review.content}</TableCell>
                       <TableCell>
                         <StarRating rating={review.rating} />
                       </TableCell>
