@@ -4,7 +4,6 @@ import PlayArrow from "@mui/icons-material/PlayArrow";
 import ReactPlayer from "react-player";
 
 const VideoPlayer = () => {
-  console.log(window.innerWidth);
   return (
     <ReactPlayer
       url="https://users.aalto.fi/~nummelt3/promovideo.mp4"
