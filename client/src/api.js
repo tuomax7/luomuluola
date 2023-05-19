@@ -23,7 +23,7 @@ export const restaurantByUrl = async (url) => {
 };
 
 const getReviews = async () => {
-  const reviews = await axios.get("http://localhost:3001/reviews");
+  const reviews = await axios.get("https://luomuluola.onrender.com/reviews");
   return reviews.data;
 };
 

@@ -10,6 +10,7 @@ const ReferenceLink = ({ url, label, title }) => {
       target="_blank"
       rel="noopener"
       mb={0.5}
+      textAlign="center"
     >
       {label}
     </Link>
