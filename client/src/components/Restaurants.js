@@ -105,7 +105,8 @@ const Restaurants = () => {
         </FormControl>
         {restaurants.length <= 0 ? (
           <Typography mx={5}>
-            No results found! Type at least 3 characters to search for cities.
+            No results found! Type at least 3 characters to search for Finnish
+            cities (e.g. Helsinki, Tampere)
           </Typography>
         ) : (
           <LoadingSpinner fetching={isFetching} style={{ height: "50vh" }}>
@@ -124,6 +125,7 @@ const Restaurants = () => {
               onChange={(event) => setSortBy(event.target.value)}
               sx={{
                 my: 1,
+                mx: 2,
               }}
               row
             >

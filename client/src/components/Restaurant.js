@@ -156,18 +156,28 @@ const Restaurant = () => {
                             justifyContent="center"
                             alignItems="center"
                           >
-                            <Typography>{review.upvotes}</Typography>
                             <IconButton
                               onClick={() => handleVote(review.id, 1)}
                             >
-                              <ThumbUpIcon style={{ color: "green" }} />
+                              <ThumbUpIcon
+                                style={{ color: "green" }}
+                                fontSize="large"
+                              />
                             </IconButton>
                             <IconButton
                               onClick={() => handleVote(review.id, -1)}
                             >
-                              <ThumbDownIcon style={{ color: "#CB1615" }} />
+                              <ThumbDownIcon
+                                style={{ color: "#CB1615" }}
+                                fontSize="large"
+                              />
                             </IconButton>
                           </Box>
+                          <Typography>
+                            {review.upvotes >= 0
+                              ? `${review.upvotes} total likes `
+                              : `${-review.upvotes} total dislikes `}
+                          </Typography>
                         </TableCell>
                       </TableRow>
                     ) : (
@@ -183,18 +193,28 @@ const Restaurant = () => {
                             justifyContent="center"
                             alignItems="center"
                           >
-                            <Typography>{review.upvotes}</Typography>
                             <IconButton
                               onClick={() => handleVote(review.id, 1)}
                             >
-                              <ThumbUpIcon style={{ color: "green" }} />
+                              <ThumbUpIcon
+                                style={{ color: "green" }}
+                                fontSize="large"
+                              />
                             </IconButton>
                             <IconButton
                               onClick={() => handleVote(review.id, -1)}
                             >
-                              <ThumbDownIcon style={{ color: "#CB1615" }} />
+                              <ThumbDownIcon
+                                style={{ color: "#CB1615" }}
+                                fontSize="large"
+                              />
                             </IconButton>
                           </Box>
+                          <Typography>
+                            {review.upvotes >= 0
+                              ? `${review.upvotes} total likes `
+                              : `${-review.upvotes} total dislikes `}
+                          </Typography>
                         </TableCell>
                       </TableRow>
                     )
