@@ -7,7 +7,7 @@ import {
   TableRow,
   TableCell,
   Typography,
-  TableHead,
+  Link,
   IconButton,
   FormControl,
   TextField,
@@ -20,7 +20,6 @@ import { useParams } from "react-router-dom";
 import StarRating from "./StarRating";
 import OrganicRating from "./OrganicRating";
 import LoadingSpinner from "./LoadingSpinner";
-import ReferenceLink from "./ReferenceLink";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
@@ -108,7 +107,11 @@ const Restaurant = () => {
                 alignItems="center"
                 mb={2}
               >
-                <Typography variant="h2" textAlign="center">
+                <Typography
+                  variant="h2"
+                  textAlign="center"
+                  sx={{ fontSize: { xs: 40, sm: 50 } }}
+                >
                   {restaurant.kitchen}
                 </Typography>
                 <StarRating rating={restaurant.rating} />
@@ -119,41 +122,83 @@ const Restaurant = () => {
                 <Typography fontSize={20}>
                   {restaurant.zip} {restaurant.city}
                 </Typography>
-                <ReferenceLink
-                  url={restaurant.www}
-                  label={restaurant.www}
-                  title={restaurant.kitchen}
-                />
+
+                <Link
+                  color="inherit"
+                  href={restaurant.www}
+                  title={restaurant.kitche}
+                  target="_blank"
+                  rel="noopener"
+                  mb={0.5}
+                  fontSize={20}
+                >
+                  {restaurant.www}
+                </Link>
               </Box>
 
               <Table style={{ width: "80%", columnGap: 0 }}>
                 <TableBody>
-                  {restaurant.reviews.map((review) => (
-                    <TableRow key={review.id}>
-                      <TableCell width="60%">
-                        <Typography fontSize={16}>{review.content}</Typography>
-                      </TableCell>
-                      <TableCell width="30%">
-                        <StarRating rating={review.rating} />
-                      </TableCell>
-                      <TableCell>
-                        <Box
-                          display="flex"
-                          flexDirection="row"
-                          justifyContent="center"
-                          alignItems="center"
-                        >
-                          <Typography>{review.upvotes}</Typography>
-                          <IconButton onClick={() => handleVote(review.id, 1)}>
-                            <ThumbUpIcon style={{ color: "green" }} />
-                          </IconButton>
-                          <IconButton onClick={() => handleVote(review.id, -1)}>
-                            <ThumbDownIcon style={{ color: "#CB1615" }} />
-                          </IconButton>
-                        </Box>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  {restaurant.reviews.map((review) =>
+                    window.innerWidth > 600 ? (
+                      <TableRow key={review.id}>
+                        <TableCell width="60%">
+                          <Typography fontSize={16}>
+                            {review.content}
+                          </Typography>
+                        </TableCell>
+                        <TableCell width="30%">
+                          <StarRating rating={review.rating} />
+                        </TableCell>
+                        <TableCell>
+                          <Box
+                            display="flex"
+                            flexDirection="row"
+                            justifyContent="center"
+                            alignItems="center"
+                          >
+                            <Typography>{review.upvotes}</Typography>
+                            <IconButton
+                              onClick={() => handleVote(review.id, 1)}
+                            >
+                              <ThumbUpIcon style={{ color: "green" }} />
+                            </IconButton>
+                            <IconButton
+                              onClick={() => handleVote(review.id, -1)}
+                            >
+                              <ThumbDownIcon style={{ color: "#CB1615" }} />
+                            </IconButton>
+                          </Box>
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      <TableRow key={review.id}>
+                        <TableCell width="80%">
+                          <Typography fontSize={16}>
+                            {review.content}
+                          </Typography>
+                          <StarRating rating={review.rating} />
+                          <Box
+                            display="flex"
+                            flexDirection="row"
+                            justifyContent="center"
+                            alignItems="center"
+                          >
+                            <Typography>{review.upvotes}</Typography>
+                            <IconButton
+                              onClick={() => handleVote(review.id, 1)}
+                            >
+                              <ThumbUpIcon style={{ color: "green" }} />
+                            </IconButton>
+                            <IconButton
+                              onClick={() => handleVote(review.id, -1)}
+                            >
+                              <ThumbDownIcon style={{ color: "#CB1615" }} />
+                            </IconButton>
+                          </Box>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  )}
                 </TableBody>
               </Table>
               <FormControl
@@ -179,6 +224,7 @@ const Restaurant = () => {
                   value={commentInput}
                   size="medium"
                   fullWidth
+                  sx={{ maxWidth: 300 }}
                 />
 
                 <Box display="flex" flexDirection="row" sx={{ my: 1 }}>

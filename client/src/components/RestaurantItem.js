@@ -19,11 +19,13 @@ const RestaurantItem = ({ restaurant }) => {
         <StarRating rating={restaurant.rating} />
         <OrganicRating rating={Number(restaurant.porras)} />
       </TableCell>
-      <TableCell width="33%">
-        <Typography fontSize={18}>
-          {restaurant.address}, {restaurant.city}
-        </Typography>
-      </TableCell>
+      {window.innerWidth > 600 && (
+        <TableCell width="33%">
+          <Typography fontSize={18}>
+            {restaurant.address}, {restaurant.city}
+          </Typography>
+        </TableCell>
+      )}
     </TableRow>
   );
 };

@@ -10,7 +10,8 @@ const NavBar = () => {
         sx={{
           flexDirection: {
             xs: "column",
-            sm: "row",
+            sm: "column",
+            md: "row",
             justifyContent: "center",
             alignItems: "center",
           },
@@ -27,7 +28,7 @@ const NavBar = () => {
           ></Box>
         </Link>
 
-        <Typography variant="h1">
+        <Typography variant="h1" fontSize={40}>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             LuomuLuola
           </Link>

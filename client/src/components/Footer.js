@@ -12,7 +12,9 @@ const Footer = () => {
       sx={{ marginTop: "auto", background: "#926E50" }}
       width="100%"
     >
-      <Typography variant="h3">Intro video music and logo materials</Typography>
+      <Typography variant="h3" fontSize={30} textAlign="center">
+        Intro video music and logo materials
+      </Typography>
       <ReferenceLink
         url="https://pixabay.com/music/corporate-wake-up-to-the-renaissance-135540/"
         title="background music"

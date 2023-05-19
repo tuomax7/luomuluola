@@ -18,7 +18,13 @@ const Home = () => {
       >
         <NavBar />
 
-        <Typography variant="h2">Explore Organic Shopping!</Typography>
+        <Typography
+          variant="h2"
+          textAlign="center"
+          sx={{ fontSize: { xs: 40, sm: 50 } }}
+        >
+          Explore Organic Shopping!
+        </Typography>
         <VideoPlayer />
         <Introduction />
         <Footer />

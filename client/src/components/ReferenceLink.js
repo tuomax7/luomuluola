@@ -9,6 +9,7 @@ const ReferenceLink = ({ url, label, title }) => {
       title={title}
       target="_blank"
       rel="noopener"
+      mb={0.5}
     >
       {label}
     </Link>

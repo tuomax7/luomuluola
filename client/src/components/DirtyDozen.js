@@ -39,11 +39,15 @@ const DirtyDozen = () => {
         minHeight="100vh"
       >
         <NavBar />
-        <Box width="50%">
-          <Typography variant="h2" textAlign="center">
+        <Box sx={{ width: { sx: "80%", sm: "50%" } }}>
+          <Typography
+            variant="h2"
+            textAlign="center"
+            sx={{ fontSize: { xs: 40, sm: 50 } }}
+          >
             The Dirty Dozen
           </Typography>
-          <Typography fontSize={18}>
+          <Typography fontSize={18} mx={5}>
             The following 12 fruits & vegetables are the highest in pesticides
             measured by the{" "}
             <ReferenceLink
@@ -60,27 +64,35 @@ const DirtyDozen = () => {
             {dirtyDozenData.map((foodName, index) => (
               <TableRow key={index}>
                 <TableCell>
-                  <Typography fontSize={25}>{index + 1}.</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography fontSize={30}>{foodName}</Typography>
-                </TableCell>
-                <TableCell>
                   <Box
-                    component="img"
-                    sx={{
-                      width: 250,
-                      border: 4,
-                      borderRadius: 3,
-                    }}
-                    src={`/images/${foodName}.jpeg`}
-                  ></Box>
+                    display="flex"
+                    flexDirection="column"
+                    width="100%"
+                    alignItems="center"
+                  >
+                    <Typography fontSize={25}>
+                      {index + 1}. {foodName}
+                    </Typography>
+
+                    <Box
+                      component="img"
+                      sx={{
+                        width: {
+                          xs: 250,
+                          sm: 300,
+                        },
+                        border: 4,
+                        borderRadius: 3,
+                      }}
+                      src={`/images/${foodName}.jpeg`}
+                    ></Box>
+                  </Box>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        <Box width="50%" my={5}>
+        <Box width="50%" my={5} textAlign="center">
           <Typography fontSize={18}>
             Read more about the Dirty Dozen and its counterpart the Clean
             Fifteen from{" "}

@@ -69,11 +69,15 @@ const Restaurants = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="40vh"
+        minHeight="30vh"
       >
         <NavBar />
-        <Box width="80%">
-          <Typography variant="h2" textAlign="center">
+        <Box sx={{ width: { sx: "80%", sm: "50%" } }}>
+          <Typography
+            variant="h2"
+            textAlign="center"
+            sx={{ fontSize: { xs: 40, sm: 50 } }}
+          >
             Organic Restaurants
           </Typography>
         </Box>
@@ -84,7 +88,7 @@ const Restaurants = () => {
             placeholder={`Search for cities...`}
             onChange={handleQueryChange}
             value={searchQuery}
-            style={{ width: "auto", minWidth: 350 }}
+            style={{ width: "auto", minWidth: 300 }}
             sx={{ my: 1 }}
             fontSize={20}
             InputProps={{
@@ -100,7 +104,7 @@ const Restaurants = () => {
           />
         </FormControl>
         {restaurants.length <= 0 ? (
-          <Typography>
+          <Typography mx={5}>
             No results found! Type at least 3 characters to search for cities.
           </Typography>
         ) : (

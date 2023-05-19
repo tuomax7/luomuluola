@@ -98,7 +98,7 @@ const RestaurantList = ({ restaurants }) => {
   };
 
   return (
-    <Table style={{ width: "60%", columnGap: 0 }}>
+    <Table sx={{ width: { sx: "80%", sm: "60%" }, columnGap: 0 }}>
       <TableHead>
         <TableRow>
           <TableCell>
@@ -107,9 +107,11 @@ const RestaurantList = ({ restaurants }) => {
           <TableCell>
             <Typography fontSize={22}>Ratings</Typography>
           </TableCell>
-          <TableCell>
-            <Typography fontSize={22}>Address</Typography>
-          </TableCell>
+          {window.innerWidth > 600 && (
+            <TableCell>
+              <Typography fontSize={22}>Address</Typography>
+            </TableCell>
+          )}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -131,7 +133,11 @@ const RestaurantList = ({ restaurants }) => {
       <TableFooter>
         <TableRow>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 20, { label: "All", value: -1 }]}
+            rowsPerPageOptions={
+              window.innerWidth > 500
+                ? [5, 10, 20, { label: "All", value: -1 }]
+                : []
+            }
             colSpan={3}
             count={restaurants.length}
             rowsPerPage={rowsPerPage}
