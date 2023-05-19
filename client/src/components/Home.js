@@ -18,7 +18,7 @@ const Home = () => {
       >
         <NavBar />
 
-        <Typography variant="h2">Hyppää luomuostoksille!</Typography>
+        <Typography variant="h2">Explore Organic Shopping!</Typography>
         <VideoPlayer />
         <Introduction />
         <Footer />

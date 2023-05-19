@@ -9,6 +9,7 @@ import {
   TablePagination,
   Box,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
@@ -100,9 +101,15 @@ const RestaurantList = ({ restaurants }) => {
     <Table style={{ width: "60%", columnGap: 0 }}>
       <TableHead>
         <TableRow>
-          <TableCell>Name</TableCell>
-          <TableCell>Rating</TableCell>
-          <TableCell>Address</TableCell>
+          <TableCell>
+            <Typography fontSize={22}>Name</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography fontSize={22}>Ratings</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography fontSize={22}>Address</Typography>
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

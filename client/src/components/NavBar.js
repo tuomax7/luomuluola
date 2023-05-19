@@ -6,7 +6,16 @@ import LinkButton from "./LinkButton.js";
 const NavBar = () => {
   return (
     <AppBar sx={{ mb: 2, py: 1 }} position="static">
-      <Toolbar sx={{ flexDirection: { xs: "column", sm: "row" } }}>
+      <Toolbar
+        sx={{
+          flexDirection: {
+            xs: "column",
+            sm: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+        }}
+      >
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           <Box
             component="img"

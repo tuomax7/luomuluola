@@ -38,10 +38,19 @@ const Restaurants = () => {
 
   const [sortBy, setSortBy] = useState("best");
 
-  const sortedRestaurants =
-    sortBy === "best"
-      ? restaurants.sort((r1, r2) => r2.rating - r1.rating)
-      : restaurants.sort((r1, r2) => r1.rating - r2.rating);
+  const sortedRestaurants = () => {
+    switch (sortBy) {
+      case "best":
+        return restaurants.sort((r1, r2) => r2.rating - r1.rating);
+      case "worst":
+        return restaurants.sort((r1, r2) => r1.rating - r2.rating);
+
+      case "organic":
+        return restaurants.sort((r1, r2) => r2.porras - r1.porras);
+      default:
+        return restaurants.sort((r1, r2) => r2.rating - r1.rating);
+    }
+  };
 
   const handleQueryChange = async (event) => {
     setSearchQuery(event.target.value);
@@ -60,7 +69,7 @@ const Restaurants = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="50vh"
+        minHeight="40vh"
       >
         <NavBar />
         <Box width="80%">
@@ -92,7 +101,7 @@ const Restaurants = () => {
         </FormControl>
         {restaurants.length <= 0 ? (
           <Typography>
-            No results found! Type at least 3 characters to search.
+            No results found! Type at least 3 characters to search for cities.
           </Typography>
         ) : (
           <LoadingSpinner fetching={isFetching} style={{ height: "50vh" }}>
@@ -124,8 +133,13 @@ const Restaurants = () => {
                 control={<Radio disableRipple color="default" />}
                 label="Worst rated first"
               />
+              <FormControlLabel
+                value="organic"
+                control={<Radio disableRipple color="default" />}
+                label="Most organic first"
+              />
             </RadioGroup>
-            <RestaurantList restaurants={sortedRestaurants} />
+            <RestaurantList restaurants={sortedRestaurants()} />
           </LoadingSpinner>
         )}
       </Box>

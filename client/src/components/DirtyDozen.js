@@ -12,8 +12,6 @@ import {
 import ReferenceLink from "./ReferenceLink";
 import NavBar from "./NavBar";
 
-//had detectable amounts of pesticides
-//img-urlit tilalle?
 const dirtyDozenData = [
   "Strawberries",
   "Spinach",
@@ -45,15 +43,17 @@ const DirtyDozen = () => {
           <Typography variant="h2" textAlign="center">
             The Dirty Dozen
           </Typography>
-          The following 12 fruits & vegetables are the highest in pesticides
-          measured by the{" "}
-          <ReferenceLink
-            url="https://www.ewg.org/foodnews/summary.php"
-            label="Environmental Working Group"
-            title="EWG Dirty Dozen 2023"
-          />{" "}
-          in USA. When you go shopping, try to buy at least these products
-          organic!
+          <Typography fontSize={18}>
+            The following 12 fruits & vegetables are the highest in pesticides
+            measured by the{" "}
+            <ReferenceLink
+              url="https://www.ewg.org/foodnews/summary.php"
+              label="Environmental Working Group"
+              title="EWG Dirty Dozen 2023"
+            />{" "}
+            in USA. When you go shopping, try to buy at least these products
+            organic!
+          </Typography>
         </Box>
         <Table style={{ width: "80%", columnGap: 0 }}>
           <TableBody>
@@ -69,7 +69,9 @@ const DirtyDozen = () => {
                   <Box
                     component="img"
                     sx={{
-                      width: 200,
+                      width: 250,
+                      border: 4,
+                      borderRadius: 3,
                     }}
                     src={`/images/${foodName}.jpeg`}
                   ></Box>
@@ -78,14 +80,16 @@ const DirtyDozen = () => {
             ))}
           </TableBody>
         </Table>
-        <Box width="50%">
-          Read more about the Dirty Dozen and its counterpart the Clean Fifteen
-          from{" "}
-          <ReferenceLink
-            url="https://www.ewg.org/foodnews/summary.php"
-            label="here!"
-            title="EWG Dirty Dozen 2023"
-          />
+        <Box width="50%" my={5}>
+          <Typography fontSize={18}>
+            Read more about the Dirty Dozen and its counterpart the Clean
+            Fifteen from{" "}
+            <ReferenceLink
+              url="https://www.ewg.org/foodnews/summary.php"
+              label="here!"
+              title="EWG Dirty Dozen 2023"
+            />
+          </Typography>
         </Box>
       </Box>
     </Box>
