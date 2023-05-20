@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const RestaurantItem = ({ restaurant }) => {
   return (
-    <TableRow>
+    <TableRow style={{ height: 125 }}>
       <TableCell width="33%">
         <Link to={restaurant.cleanurl} style={{ color: "white" }}>
           <Typography fontSize={20}>{restaurant.kitchen}</Typography>
