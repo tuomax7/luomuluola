@@ -8,8 +8,17 @@ const style = {
 
 const Introduction = () => {
   return (
-    <Box sx={{ width: { xs: "80%", sm: "50%" } }} marginBottom={10}>
-      <Typography variant="h3" marginBottom={5} marginTop={5}>
+    <Box
+      sx={{ width: { xs: "80%", md: "60%" } }}
+      marginBottom={10}
+      textAlign="justify"
+    >
+      <Typography
+        variant="h3"
+        marginBottom={5}
+        marginTop={5}
+        textAlign="center"
+      >
         Enter LuomuLuola!
       </Typography>
       <Typography style={style}>
