@@ -1,9 +1,9 @@
 import React from "react";
 import { Typography, Box, CssBaseline } from "@mui/material";
-import VideoPlayer from "./VideoPlayer";
-import Introduction from "./Introduction";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
+import VideoPlayer from "./elements/VideoPlayer";
+import Introduction from "./elements/Introduction";
+import Footer from "./elements/Footer";
+import NavBar from "./elements/NavBar";
 
 const Home = () => {
   return (

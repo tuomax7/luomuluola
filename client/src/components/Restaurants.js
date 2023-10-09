@@ -15,9 +15,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 import { useQuery } from "@tanstack/react-query";
 
-import NavBar from "./NavBar";
-import LoadingSpinner from "./LoadingSpinner";
-import RestaurantList from "./RestaurantList";
+import NavBar from "./elements/NavBar";
+import LoadingSpinner from "./elements/LoadingSpinner";
+import RestaurantList from "./restaurants/RestaurantList";
 
 import { getRestaurantsBySearchQuery } from "../api";
 

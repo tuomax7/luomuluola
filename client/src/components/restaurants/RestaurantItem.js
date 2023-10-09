@@ -1,8 +1,8 @@
 import { React } from "react";
 import { TableRow, TableCell, Typography } from "@mui/material";
 
-import StarRating from "./StarRating";
-import OrganicRating from "./OrganicRating";
+import StarRating from "../ratings/StarRating";
+import OrganicRating from "../ratings/OrganicRating";
 
 import { Link } from "react-router-dom";
 

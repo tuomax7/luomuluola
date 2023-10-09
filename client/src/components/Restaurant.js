@@ -15,11 +15,11 @@ import {
   Button,
 } from "@mui/material";
 
-import NavBar from "./NavBar";
+import NavBar from "./elements/NavBar";
 import { useParams } from "react-router-dom";
-import StarRating from "./StarRating";
-import OrganicRating from "./OrganicRating";
-import LoadingSpinner from "./LoadingSpinner";
+import StarRating from "./ratings/StarRating";
+import OrganicRating from "./ratings/OrganicRating";
+import LoadingSpinner from "./elements/LoadingSpinner";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 

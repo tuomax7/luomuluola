@@ -9,8 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import ReferenceLink from "./ReferenceLink";
-import NavBar from "./NavBar";
+import ReferenceLink from "./elements/ReferenceLink";
+import NavBar from "./elements/NavBar";
 
 const dirtyDozenData = [
   "Strawberries",
