@@ -126,7 +126,7 @@ const Restaurant = () => {
                 <Link
                   color="inherit"
                   href={restaurant.www}
-                  title={restaurant.kitche}
+                  title={restaurant.kitchen}
                   target="_blank"
                   rel="noopener"
                   mb={0.5}
@@ -162,30 +162,26 @@ const Restaurant = () => {
                               <ThumbUpIcon
                                 style={{ color: "green" }}
                                 fontSize="large"
+                                sx={{ stroke: "white", strokeWidth: 1 }}
                               />
                             </IconButton>
                             <IconButton
                               onClick={() => handleVote(review.id, -1)}
                             >
                               <ThumbDownIcon
-                                style={{ color: "#CB1615" }}
+                                style={{ color: "#6b0019" }}
                                 fontSize="large"
+                                sx={{ stroke: "white", strokeWidth: 1 }}
                               />
                             </IconButton>
                           </Box>
                           {review.upvotes >= 0 ? (
                             <Typography>
-                              {review.upvotes} total{" "}
-                              <Typography component="span" color="green">
-                                likes
-                              </Typography>
+                              {review.upvotes} total likes
                             </Typography>
                           ) : (
                             <Typography>
-                              {-review.upvotes} total{" "}
-                              <Typography component="span" color="#CB1615">
-                                dislikes
-                              </Typography>
+                              {-review.upvotes} total dislikes
                             </Typography>
                           )}
                         </TableCell>
@@ -209,30 +205,26 @@ const Restaurant = () => {
                               <ThumbUpIcon
                                 style={{ color: "green" }}
                                 fontSize="large"
+                                sx={{ stroke: "white", strokeWidth: 1 }}
                               />
                             </IconButton>
                             <IconButton
                               onClick={() => handleVote(review.id, -1)}
                             >
                               <ThumbDownIcon
-                                style={{ color: "#CB1615" }}
+                                style={{ color: "#6b0019" }}
                                 fontSize="large"
+                                sx={{ stroke: "white", strokeWidth: 1 }}
                               />
                             </IconButton>
                           </Box>
                           {review.upvotes >= 0 ? (
                             <Typography>
-                              {review.upvotes} total{" "}
-                              <Typography component="span" color="green">
-                                likes
-                              </Typography>
+                              {review.upvotes} total likes
                             </Typography>
                           ) : (
                             <Typography>
-                              {-review.upvotes} total{" "}
-                              <Typography component="span" color="#CB1615">
-                                dislikes
-                              </Typography>
+                              {-review.upvotes} total dislikes
                             </Typography>
                           )}
                         </TableCell>
@@ -251,12 +243,13 @@ const Restaurant = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   minWidth: 350,
+                  color: "white",
+                  borderColor: "white",
                 }}
               >
                 <TextField
                   id="outlined-multiline-static"
                   label="Publish a new review!"
-                  color="secondary"
                   multiline
                   rows={4}
                   placeholder="Comment here..."
@@ -265,6 +258,9 @@ const Restaurant = () => {
                   size="medium"
                   fullWidth
                   sx={{ maxWidth: 300 }}
+                  InputLabelProps={{
+                    style: { color: "#fff" },
+                  }}
                 />
 
                 <Box display="flex" flexDirection="row" sx={{ my: 1 }}>

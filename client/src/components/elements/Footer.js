@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import ReferenceLink from "./ReferenceLink";
-
 const Footer = () => {
   return (
     <Box
@@ -9,7 +8,7 @@ const Footer = () => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      sx={{ marginTop: "auto", background: "#926E50" }}
+      sx={{ marginTop: "auto", bgcolor: "primary.main" }}
       width="100%"
     >
       <Typography variant="h3" fontSize={30} textAlign="center">

@@ -15,7 +15,13 @@ export default function OrganicRating({ rating }) {
         value={rating}
         readOnly
         max={3}
-        icon={<SpaIcon style={{ color: "green" }} fontSize="inherit" />}
+        icon={
+          <SpaIcon
+            style={{ color: "green" }}
+            fontSize="inherit"
+            sx={{ stroke: "black", strokeWidth: 1 }}
+          />
+        }
         emptyIcon={<SpaIcon fontSize="inherit" />}
       />
       <Typography>( {rating} / 3 organic)</Typography>

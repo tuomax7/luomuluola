@@ -10,7 +10,10 @@ const VideoPlayer = () => {
       controls
       playIcon={
         <IconButton aria-label="play-video">
-          <PlayArrow sx={{ transform: "scale(8)" }} color="secondary" />
+          <PlayArrow
+            sx={{ transform: "scale(8)", stroke: "white", strokeWidth: 1 }}
+            color="primary"
+          />
         </IconButton>
       }
       light="https://users.aalto.fi/~nummelt3/promovideotease.png"

@@ -32,8 +32,8 @@ const Introduction = () => {
         consumption.
       </Typography>
       <Typography style={style}>
-        LuomuLuola is an everyman's guide designed to help you eat more
-        natural!🍃
+        LuomuLuola is an everyman's guide designed to help you eat more natural!
+        🍃
       </Typography>
     </Box>
   );

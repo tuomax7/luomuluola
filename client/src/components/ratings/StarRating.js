@@ -9,7 +9,13 @@ export default function StarRating({ rating }) {
       justifyContent="center"
       textAlign="center"
     >
-      <Rating name="restaurantRating" value={rating} readOnly precision={0.1} />
+      <Rating
+        name="restaurantRating"
+        value={rating}
+        readOnly
+        precision={0.1}
+        sx={{ stroke: "black", strokeWidth: 1 }}
+      />
       <Typography>( {rating} )</Typography>
     </Box>
   );

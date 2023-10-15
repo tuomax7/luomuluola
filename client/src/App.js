@@ -12,13 +12,13 @@ const customTheme = createTheme({
   },
   palette: {
     background: {
-      default: "#CDA169",
+      default: "#795d3d",
     },
     text: {
       primary: "#ffffff",
     },
     primary: {
-      main: "#CDA169",
+      main: "#65462c",
     },
     secondary: {
       main: "#926E50",
