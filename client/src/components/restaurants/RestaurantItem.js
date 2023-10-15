@@ -15,7 +15,12 @@ const RestaurantItem = ({ restaurant }) => {
         </Link>
       </TableCell>
 
-      <TableCell width="33%" margin="auto" textAlign="center">
+      <TableCell
+        width="33%"
+        margin="auto"
+        textAlign="center"
+        justifyContent="center"
+      >
         <StarRating rating={restaurant.rating} />
         <OrganicRating rating={Number(restaurant.porras)} />
       </TableCell>

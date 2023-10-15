@@ -141,7 +141,7 @@ const Restaurant = () => {
                   {restaurant.reviews.map((review) =>
                     window.innerWidth > 600 ? (
                       <TableRow key={review.id}>
-                        <TableCell width="60%">
+                        <TableCell width="50%">
                           <Typography fontSize={16}>
                             {review.content}
                           </Typography>
@@ -149,7 +149,7 @@ const Restaurant = () => {
                         <TableCell width="30%">
                           <StarRating rating={review.rating} />
                         </TableCell>
-                        <TableCell>
+                        <TableCell width="20%">
                           <Box
                             display="flex"
                             flexDirection="row"
@@ -173,11 +173,21 @@ const Restaurant = () => {
                               />
                             </IconButton>
                           </Box>
-                          <Typography>
-                            {review.upvotes >= 0
-                              ? `${review.upvotes} total likes `
-                              : `${-review.upvotes} total dislikes `}
-                          </Typography>
+                          {review.upvotes >= 0 ? (
+                            <Typography>
+                              {review.upvotes} total{" "}
+                              <Typography component="span" color="green">
+                                likes
+                              </Typography>
+                            </Typography>
+                          ) : (
+                            <Typography>
+                              {-review.upvotes} total{" "}
+                              <Typography component="span" color="#CB1615">
+                                dislikes
+                              </Typography>
+                            </Typography>
+                          )}
                         </TableCell>
                       </TableRow>
                     ) : (
@@ -210,11 +220,21 @@ const Restaurant = () => {
                               />
                             </IconButton>
                           </Box>
-                          <Typography>
-                            {review.upvotes >= 0
-                              ? `${review.upvotes} total likes `
-                              : `${-review.upvotes} total dislikes `}
-                          </Typography>
+                          {review.upvotes >= 0 ? (
+                            <Typography>
+                              {review.upvotes} total{" "}
+                              <Typography component="span" color="green">
+                                likes
+                              </Typography>
+                            </Typography>
+                          ) : (
+                            <Typography>
+                              {-review.upvotes} total{" "}
+                              <Typography component="span" color="#CB1615">
+                                dislikes
+                              </Typography>
+                            </Typography>
+                          )}
                         </TableCell>
                       </TableRow>
                     )
