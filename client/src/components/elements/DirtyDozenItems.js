@@ -25,7 +25,7 @@ const dirtyDozenData = [
 ];
 
 const FoodItem = ({ index, foodName }) => (
-  <Box display="flex" flexDirection="column" width="100%" alignItems="center">
+  <Box display="flex" flexDirection="column" alignItems="center">
     <Typography fontSize={25}>
       {index + 1}. {foodName}
     </Typography>
@@ -52,7 +52,16 @@ const FoodItem = ({ index, foodName }) => (
 const DirtyDozenItems = () => {
   if (window.innerWidth > 500) {
     return (
-      <Grid container rowSpacing={2} columnSpacing={0}>
+      <Grid
+        container
+        rowSpacing={2}
+        sx={{
+          width: {
+            xs: 500,
+            sm: 700,
+          },
+        }}
+      >
         {dirtyDozenData.map((foodName, index) => (
           <Grid item key={index} xs={6}>
             <FoodItem index={index} foodName={foodName} />

@@ -98,17 +98,17 @@ const RestaurantList = ({ restaurants }) => {
   };
 
   return (
-    <Table sx={{ width: { sx: "80%", sm: "60%" }, columnGap: 0 }}>
+    <Table sx={{ width: { xs: "80%", md: 900 }, columnGap: 0 }}>
       <TableHead>
         <TableRow>
-          <TableCell>
+          <TableCell align="center">
             <Typography fontSize={22}>Name</Typography>
           </TableCell>
-          <TableCell>
+          <TableCell align="center">
             <Typography fontSize={22}>Ratings</Typography>
           </TableCell>
           {window.innerWidth > 600 && (
-            <TableCell>
+            <TableCell align="center">
               <Typography fontSize={22}>Address</Typography>
             </TableCell>
           )}

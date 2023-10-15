@@ -6,7 +6,9 @@ export default function OrganicRating({ rating }) {
   return (
     <Box
       display="flex"
-      sx={{ flexDirection: { xs: "column", sm: "row" }, my: 1 }}
+      sx={{ flexDirection: { xs: "column", sm: "column", md: "row" }, my: 1 }}
+      justifyContent="center"
+      textAlign="center"
     >
       <Rating
         name="organicRating"
@@ -16,9 +18,7 @@ export default function OrganicRating({ rating }) {
         icon={<SpaIcon style={{ color: "green" }} fontSize="inherit" />}
         emptyIcon={<SpaIcon fontSize="inherit" />}
       />
-      <Typography style={{ textAlign: "center" }}>
-        ( {rating} / 3 organic)
-      </Typography>
+      <Typography>( {rating} / 3 organic)</Typography>
     </Box>
   );
 }

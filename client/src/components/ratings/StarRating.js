@@ -3,9 +3,14 @@ import { Rating, Box, Typography } from "@mui/material";
 
 export default function StarRating({ rating }) {
   return (
-    <Box display="flex" sx={{ flexDirection: { xs: "column", sm: "row" } }}>
+    <Box
+      display="flex"
+      sx={{ flexDirection: { xs: "column", sm: "column", md: "row" } }}
+      justifyContent="center"
+      textAlign="center"
+    >
       <Rating name="restaurantRating" value={rating} readOnly precision={0.1} />
-      <Typography style={{ textAlign: "center" }}>( {rating} )</Typography>
+      <Typography>( {rating} )</Typography>
     </Box>
   );
 }
