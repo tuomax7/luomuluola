@@ -69,7 +69,6 @@ const Restaurants = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="30vh"
       >
         <NavBar />
         <Box sx={{ width: { sx: "80%", sm: "50%" } }}>
